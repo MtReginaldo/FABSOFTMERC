@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.univille.projetofabsoftm2023.entity.Produto;
+
 import br.univille.projetofabsoftm2023.service.ProdutoService;
 
 @Controller
@@ -17,7 +18,6 @@ public class ProdutoController {
 
     @Autowired
     private ProdutoService produtoService;
-
 
     @GetMapping
     public ModelAndView Index(){
@@ -49,11 +49,11 @@ public class ProdutoController {
                                     "produto",produto);
     }
 
-    @GetMapping("/remover/{Id}")
+    @GetMapping("/remover/{id}")
     public ModelAndView remover(@PathVariable("id") long id){
         
         produtoService.delete(id);
-        return new ModelAndView("redirect:/cliente");
+        return new ModelAndView("redirect:/produto");
     }
 
 }
