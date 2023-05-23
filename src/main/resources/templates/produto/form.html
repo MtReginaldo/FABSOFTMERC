@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html   xmlns:th="http://www.thymeleaf.org"
     lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FABSOFT2023</title>
-    <style>
+
+    <head th:include="layout :: htmlhead">
+        <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
@@ -30,7 +27,6 @@
             text-align: left; 
             margin-bottom: 20px;
             padding-left: 20px;
-            text-align: center;
         }
 
         .nav a {
@@ -89,15 +85,39 @@
             margin-bottom: 20px;
             color: #007bff;
         }
-    </style>
-</head>
+        </style>
+    </head>
+
     <body>
         <nav class="nav">
-            <a href="#"><strong> Projeto Mercado </strong></a>
+            <a href="#"><strong> Produtos </strong></a>
             <a href="/">Home</a>
             <a href="/usuario">Usuários</a>
             <a href="/produto">Produtos</a>
             <a href="/funcionario">Funcionários</a>
-        </nav>   
+        </nav>
+        <main class= "container">
+            <form th:action="@{/produto/(form)}"
+                method="POST"
+                th:object="${produto}">
+                <input type="hidden" th:field="*{id}">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" th:field="*{nome}"> 
+                    <label>Preço</label>
+                    <input type="text" class="form-control" th:field="*{preco}"> 
+                    <label>Tipo</label>
+                    <input type="text" class="form-control" th:field="*{tipo}">    
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        Enviar
+                    </button>
+                </div>
+            </form>
+        </main>
+        <div th:include="layout :: footer">(footer)</div>
     </body>
+
 </html> 
