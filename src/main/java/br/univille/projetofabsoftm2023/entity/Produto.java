@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Produto {
@@ -12,11 +15,17 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    
     @Column(length = 600)
+    @NotBlank(message = "Campo nome não pode ser em branco")
     private String nome; 
+    
     @Column(length = 600) 
+    @NotNull(message = "Campo preco não pode ser nula")
     private float preco; 
+    
     @Column(length = 600)
+    @NotNull(message = "Campo tipo não pode ser nula")
     private long tipo;
 
     public long getId() {

@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import br.univille.projetofabsoftm2023.entity.Funcionario;
 
 import br.univille.projetofabsoftm2023.service.FuncionarioService;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
 
 @Controller
 @RequestMapping("/funcionario")
@@ -34,8 +36,13 @@ public class FuncionarioController{
     }
 
     @PostMapping(params = "form")
-    public ModelAndView save(Funcionario funcionario) {
-
+    public ModelAndView save(@Valid Funcionario funcionario, BindingResult bindingResult) {
+        
+        if(bindingResult.hasErrors()) {
+            return new ModelAndView("funcionario/form", "funcionario", funcionario);
+        }
+        
+        
         FuncionarioService.save(funcionario);
         return new ModelAndView("redirect:/funcionario");
     }

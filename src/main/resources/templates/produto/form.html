@@ -1,102 +1,101 @@
 <!DOCTYPE html>
-<html   xmlns:th="http://www.thymeleaf.org"
-    lang="en">
-
-    <head th:include="layout :: htmlhead">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
         <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            flex-direction: column;
-            padding-top: 40px; 
-        }
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f8f9fa;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                flex-direction: column;
+                padding-top: 40px; 
+            }
 
-        .nav {
-            position: fixed; 
-            top: 0; 
-            width: 100%;
-            background-color: #529c35fd;
-            color: white;
-            padding: 10px 0;
-            text-align: left; 
-            margin-bottom: 20px;
-            padding-left: 20px;
-        }
+            .nav {
+                position: fixed; 
+                top: 0; 
+                width: 100%;
+                background-color: #1A815C;
+                color: #FEC741;
+                padding: 10px 0;
+                text-align: left; 
+                margin-bottom: 20px;
+                padding-left: 20px;
+            }
 
-        .nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-        }
+            .nav a {
+                color: #FEC741;
+                margin: 0 15px;
+                text-decoration: none;
+                font-weight: bold;
+            }
 
-        .container {
-            max-width: 800px; 
-            width: 700px; 
-            margin: 0 auto;
-            padding: 20px 40px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-        }
+            .container {
+                max-width: 800px; 
+                width: 700px; 
+                margin: 0 auto;
+                padding: 20px 40px;
+                background-color:  #1A815C;
+                border-radius: 20px;
+                box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+            .form-group {
+                margin-bottom: 20px;
+            }
 
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
+            .form-group label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
 
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
+            .form-group input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                box-sizing: border-box;
+            }
 
-        .btn-primary {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            border: none;
-            background-color: #007bff;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-            line-height: 1.6;
-        }
+            .btn-primary {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                border: none;
+                background-color:#FEC741;
+                color: black;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 18px;
+                line-height: 1.6;
+            }
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
 
-        .form-title {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #007bff;
-        }
+            .form-title {
+                text-align: center;
+                margin-bottom: 20px;
+                color: black;
+            }
+
         </style>
-    </head>
-
-    <body>
-        <nav class="nav">
-            <a href="#"><strong> Produtos </strong></a>
-            <a href="/">Home</a>
-            <a href="/usuario">Usuários</a>
-            <a href="/produto">Produtos</a>
-            <a href="/funcionario">Funcionários</a>
-        </nav>
-        <main class= "container">
+        </head>
+        <body>
+            <nav class="nav">
+                <a href="/"><strong> Easy Shop </strong></a>
+                <a href="/usuario">Usuários</a>
+                <a href="/produto">Produtos</a>
+                <a href="/funcionario">Funcionários</a>
+            </nav>
+        <main class="container">
+            <h2 class="form-title">Cadastro de Produtos</h2>
             <form th:action="@{/produto/(form)}"
                 method="POST"
                 th:object="${produto}">
@@ -118,6 +117,6 @@
             </form>
         </main>
         <div th:include="layout :: footer">(footer)</div>
+        <style th:src="@{/style.css}"></style>
     </body>
-
 </html> 

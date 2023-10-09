@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html   xmlns:th="http://www.thymeleaf.org"
     lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FABSOFT2023</title>
-    <style>
+
+    <head>
+        <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
@@ -36,6 +33,7 @@
             color: #FEC741;
             margin: 0 15px;
             text-decoration: none;
+            font-weight: bold;
         }
 
         .container {
@@ -71,8 +69,8 @@
             width: 100%;
             padding: 10px;
             border: none;
-            background-color: #007bff;
-            color: white;
+            background-color: #1A815C;
+            color: #FEC741;
             border-radius: 5px;
             cursor: pointer;
             font-size: 18px;
@@ -86,25 +84,46 @@
         .form-title {
             text-align: center;
             margin-bottom: 20px;
-            color: #007bff;
+            color: #1A815C;
         }
+        </style>
+        </head>
+        <body>
+            <nav class="nav">
+                <a href="/"><strong> Easy Shop </strong></a>
+                <a href="/usuario">Usuários</a>
+                <a href="/produto">Produtos</a>
+                <a href="/funcionario">Funcionários</a>
+            </nav>
+            <div class="flex-container">
+                <main class="container">
+                    <h2 class="form-title">Cadastro de Produto</h2>
+            <form th:action="@{/produto/(form)}"
+                method="POST"
+                th:object="${produto}">
+                <input type="hidden" th:field="*{id}">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" th:field="*{nome}"> 
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+                    
+                    <label>Preço</label>
+                    <input type="text" class="form-control" th:field="*{preco}"> 
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></p>
+                    
+                    <label>Tipo</label>
+                    <input type="text" class="form-control" th:field="*{tipo}"> 
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></p>
+                </div>
 
-        #logo {
-            width: 0.7%;
-            height: auto;
-        }
-    </style>
-</head>
-    <body>
-        <nav class="nav">
-            <img th:src="@{/Shop.png}" id="logo"></img>
-            <a href="/"><strong>Easy Shop</strong></a>
-            <a href="/usuario"><strong>Usuários</strong></a>
-            <a href="/produto"><strong>Produtos</strong></a>
-            <a href="/funcionario"><strong>Funcionários</strong></a>
-        </nav>
-
-        <img th:src="@{/ShopComplVerd.png}" id="meio"></img>
-
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        Enviar
+                    </button>
+                </div>
+            </form>
+        </main>
+        <div th:include="layout :: footer">(footer)</div>
     </body>
+
 </html> 

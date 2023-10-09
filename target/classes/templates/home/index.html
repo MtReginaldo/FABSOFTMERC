@@ -30,12 +30,14 @@
             text-align: left; 
             margin-bottom: 20px;
             padding-left: 20px;
+            text-align: center;
         }
 
         .nav a {
             color: #FEC741;
             margin: 0 15px;
             text-decoration: none;
+            font-weight: bold; 
         }
 
         .container {
@@ -88,23 +90,14 @@
             margin-bottom: 20px;
             color: #007bff;
         }
-
-        #logo {
-            width: 0.7%;
-            height: auto;
-        }
     </style>
 </head>
     <body>
         <nav class="nav">
-            <img th:src="@{/Shop.png}" id="logo"></img>
-            <a href="/"><strong>Easy Shop</strong></a>
-            <a href="/usuario"><strong>Usuários</strong></a>
-            <a href="/produto"><strong>Produtos</strong></a>
-            <a href="/funcionario"><strong>Funcionários</strong></a>
-        </nav>
-
-        <img th:src="@{/ShopComplVerd.png}" id="meio"></img>
-
+            <a href="/usuario">Usuários</a>
+            <a href="/produto">Produtos</a>
+            <a href="/funcionario">Funcionários</a>
+        </nav>   
+        <img th:src="@{/ShopComplVerd.png}"></img>    
     </body>
 </html> 

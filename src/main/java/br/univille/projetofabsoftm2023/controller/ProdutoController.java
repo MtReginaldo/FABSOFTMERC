@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import br.univille.projetofabsoftm2023.entity.Produto;
 
 import br.univille.projetofabsoftm2023.service.ProdutoService;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
 
 @Controller
 @RequestMapping("/produto")
@@ -34,8 +36,11 @@ public class ProdutoController {
     }
 
     @PostMapping(params = "form")
-    public ModelAndView save(Produto produto){
+    public ModelAndView save(@Valid Produto produto, BindingResult bindingResult){
         //Salvar o produto no banco de dados
+        if(bindingResult.hasErrors()) {
+            return new ModelAndView("produto/form", "produto", produto);
+        }
         
         produtoService.save(produto);
         return new ModelAndView("redirect:/produto");

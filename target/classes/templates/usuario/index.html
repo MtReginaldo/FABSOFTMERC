@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-
+<html   xmlns:th="http://www.thymeleaf.org"
+    lang="en">
+    
     <head th:include="layout :: htmlhead"></head>
 
     <body>
-        <nav th:replace="layout :: menu">(menu)</nav>
-        <main class="container">
-            <a th:href="@{/usuario/novo}"
-                class="btn btn-primary">Novo Usuário</a>
+      <style>
+        #novo {
+          display: flex;
+          justify-content: center;
+          margin-top: 20px;
+      }
+      </style>
+        <nav th:replace="layout :: menu">(menu)</nav>        
+        <main class= "container">
+            <a th:href= "@{/usuario/novo}"
+                class="btn btn-warning" id="novo">Adicionar Usuário</a>
             <table class="table" id="tabusuarios">
                 <thead>
                     <tr>

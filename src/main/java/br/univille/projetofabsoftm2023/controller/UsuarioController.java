@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import br.univille.projetofabsoftm2023.entity.Usuario;
 
 import br.univille.projetofabsoftm2023.service.UsuarioService;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
 
 @Controller
 @RequestMapping("/usuario")
@@ -34,8 +36,11 @@ public class UsuarioController {
     }
 
     @PostMapping(params = "form")
-    public ModelAndView save(Usuario usuario) {
-
+    public ModelAndView save(@Valid Usuario usuario, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return new ModelAndView("usuario/form", "usuario", usuario);
+        }
+        
         usuarioService.save(usuario);
         return new ModelAndView("redirect:/usuario");
     }

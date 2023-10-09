@@ -1,21 +1,45 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head th:fragment="htmlhead">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}" />
         <link rel="stylesheet" th:href="@{/webjars/jquery-ui/1.13.2/jquery-ui.css}" />
         <link rel="stylesheet" th:href="@{/site.css}" />
+        
+        <style>
+            .navbar-custom {
+                background-color: #1A815C;
+            }
+            
+            .navbar-custom .navbar-nav .nav-link {
+                color: #FEC741;
+                font-weight: bold;
+            }
+
+              
+            .navbar-custom .navbar-brand {
+                color: #FEC741;
+                font-family: zz LET, fantasy;
+            }
+        </style>
     </head>
     <body> 
-        <nav th:fragment="menu" class="navbar container-xxl navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Sistema</a>
+        <nav th:fragment="menu" class="navbar navbar-expand-lg navbar-custom navbar-dark">
+            <a class="navbar-brand" href="/">Easy Shop</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active" sec:authorize="hasAuthority('APPROLE_admin')">
+                    <a class="nav-link" href="/usuario">Usuários</a>
+                  </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/produto">Produtos</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/funcionario">Funcionários</a>
                   </li>
                 </ul>
             </div>
